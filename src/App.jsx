@@ -439,35 +439,25 @@ function OptionCard({ option, selected, onClick }) {
 
 
 export default function App() {
-
   const [sharedQuiz] = useState(() => readSharedQuiz());
-
   const [page, setPage] = useState(() =>
-
-    readSharedQuiz() ? "play" : "home"
-
+    window.location.search.includes("quiz=") ? "play" : "home"
   );
 
-
-
   const [creatorName, setCreatorName] = useState("");
-
   const [friendName, setFriendName] = useState("");
+  const [friendQuizStarted, setFriendQuizStarted] = useState(false);
 
   const [questionIndex, setQuestionIndex] = useState(0);
-
   const [correctAnswers, setCorrectAnswers] = useState([]);
-
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-
   const [result, setResult] = useState(null);
-
   const [copied, setCopied] = useState(false);
 
-
-
   const quiz = sharedQuiz;
+
+  // Keep all your existing functions and JSX below this point.
 
 
 
