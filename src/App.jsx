@@ -618,18 +618,20 @@ export default function App() {
 
 
   function startFriendQuiz() {
-    const name = friendName.trim();
-    if (name.length < 2) {
-      alert("Please enter your name using at least 2 characters!");
-      return;
-    }
-    setFriendName(name);
-    setQuestionIndex(0);
-    setAnswers([]);
-    setSelectedAnswer(null);
-    setResult(null);
-    setPage("play");
+  const name = friendName.trim();
+
+  if (name.length < 2) {
+    alert("Please enter your name using at least 2 characters!");
+    return;
   }
+
+  setFriendName(name);
+  setQuestionIndex(0);
+  setAnswers([]);
+  setSelectedAnswer(null);
+  setResult(null);
+  setFriendQuizStarted(true);
+}
 
   function chooseFriendAnswer(optionIndex) {
     setSelectedAnswer(optionIndex);
