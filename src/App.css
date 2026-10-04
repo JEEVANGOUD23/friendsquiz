@@ -1,0 +1,502 @@
+
+/* ==========================================
+   FRIENDMATCH — FIX FOR YOUR ACTUAL APP.JSX
+   Add this at the bottom of App.css
+========================================== */
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #30283d;
+  background: #fff9fd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(ellipse at top left, #fff0f8 0%, transparent 48%),
+    radial-gradient(ellipse at bottom right, #f3edff 0%, transparent 45%),
+    #fff9fd;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell {
+  min-height: 100vh;
+  width: 100%;
+  padding: 32px 22px 48px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.hero {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  animation: fmPageEnter 0.5s ease both;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 auto 25px;
+  color: #30283d;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.hero-emoji {
+  margin: 12px auto 20px;
+  font-size: 65px;
+  animation: fmFloat 3s ease-in-out infinite;
+}
+
+.eyebrow {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 14px;
+  margin: 0 auto 19px;
+  border: 1px solid #f8d4e6;
+  border-radius: 999px;
+  color: #d84d94;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 12px 0 15px;
+  color: #30283d;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: 800;
+  line-height: 1.13;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  color: #ec5ba3;
+  background: linear-gradient(100deg, #f4559b, #a078f4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  max-width: 440px;
+  margin: 0 auto 25px;
+  color: #898197;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* Name input */
+
+.field-label {
+  display: block;
+  margin: 24px 0 9px;
+  color: #675970;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-align: left;
+}
+
+.name-input {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  margin-bottom: 15px;
+  padding: 0 17px;
+  border: 1.5px solid #eee0ef;
+  border-radius: 15px;
+  outline: none;
+  color: #30283d;
+  background: #ffffff;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.name-input::placeholder {
+  color: #b4a9bd;
+}
+
+.name-input:focus {
+  border-color: #e96bab;
+  box-shadow: 0 0 0 4px rgba(233, 107, 171, 0.12);
+}
+
+/* Primary button */
+
+.primary-btn,
+.whatsapp-btn,
+.secondary-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 54px;
+  margin: 12px 0 0;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primary-btn {
+  color: white;
+  background: linear-gradient(105deg, #f65399, #d954bd);
+  box-shadow: 0 10px 24px rgba(225, 78, 155, 0.2);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(225, 78, 155, 0.29);
+}
+
+.primary-btn:active {
+  transform: scale(0.985);
+}
+
+.whatsapp-btn {
+  color: white;
+  background: #25b963;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  background: #1fa555;
+}
+
+.secondary-btn {
+  border: 1.5px solid #eadff0;
+  color: #715e83;
+  background: #ffffff;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  border-color: #d9c4e9;
+  background: #fffaff;
+}
+
+.small-note {
+  margin: 17px 0 0;
+  color: #a197ac;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Progress bar */
+
+.progress-track {
+  width: 100%;
+  height: 5px;
+  margin: 0 auto 32px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #f2e8f1;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f4559c, #a17bf5);
+  transition: width 0.4s ease;
+}
+
+/* Question heading */
+
+.hero h1.question-title {
+  max-width: 650px;
+  margin: 28px auto 0;
+  font-size: clamp(34px, 7vw, 57px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.question-title + .description {
+  margin-top: 5px;
+  margin-bottom: 28px;
+}
+
+/* Answer options: fixes the default HTML buttons */
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  width: 100%;
+  margin: 24px auto;
+}
+
+.option-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  width: 100%;
+  min-height: 65px;
+  padding: 15px 16px;
+  border: 1.5px solid #f0e1ee;
+  border-radius: 17px;
+  color: #51445f;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 12px rgba(90, 54, 96, 0.035);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.option-card:hover {
+  transform: translateY(-2px);
+  border-color: #f0a5ce;
+  background: #fff5fa;
+  box-shadow: 0 7px 18px rgba(220, 92, 163, 0.09);
+}
+
+.option-card:active {
+  transform: scale(0.98);
+}
+
+.option-card.selected {
+  border-color: #ee63a7;
+  color: #c43c83;
+  background: linear-gradient(135deg, #fff0f7, #f8f0ff);
+  box-shadow: 0 0 0 3px rgba(238, 99, 167, 0.1);
+}
+
+.selected-mark {
+  display: inline-flex;
+  flex: 0 0 23px;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  margin-left: auto;
+  border-radius: 50%;
+  color: white;
+  background: #ed5ca3;
+  font-size: 12px;
+}
+
+/* Ready and result screens */
+
+.ready-panel,
+.result-panel {
+  max-width: 540px;
+  padding-top: 25px;
+}
+
+.result-heart {
+  margin: 10px auto 20px;
+  font-size: 60px;
+  animation: fmFloat 2.8s ease-in-out infinite;
+}
+
+.score-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  margin: 28px auto;
+  border: 8px solid #ffe0ef;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff1f8, #f3edff);
+  box-shadow: 0 0 0 8px rgba(255, 224, 239, 0.3);
+  animation: fmScoreIn 0.65s ease both;
+}
+
+.score-circle strong {
+  color: #ec559d;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.score-circle span {
+  margin-top: 4px;
+  color: #898197;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero h2.result-message {
+  margin: 20px auto;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+}
+
+/* Animations */
+
+@keyframes fmPageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fmFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fmScoreIn {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Keyboard focus */
+
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+.whatsapp-btn:focus-visible,
+.option-card:focus-visible {
+  outline: 3px solid rgba(146, 115, 248, 0.45);
+  outline-offset: 3px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 520px) {
+  .app-shell {
+    padding: 24px 18px 35px;
+  }
+
+  .brand {
+    margin-bottom: 23px;
+    font-size: 22px;
+  }
+
+  .hero-emoji {
+    font-size: 55px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 43px);
+    letter-spacing: -1.4px;
+  }
+
+  .hero h1.question-title {
+    margin-top: 24px;
+    font-size: clamp(31px, 8.5vw, 43px);
+    letter-spacing: -1.5px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .options-grid {
+    gap: 10px;
+    margin: 22px auto;
+  }
+
+  .option-card {
+    min-height: 60px;
+    padding: 12px 11px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+
+  .progress-track {
+    margin-bottom: 25px;
+  }
+
+  .ready-panel,
+  .result-panel {
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .app-shell {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .option-card {
+    min-height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
