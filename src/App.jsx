@@ -623,6 +623,7 @@ export default function App() {
       alert("Please enter your name using at least 2 characters!");
       return;
     }
+    setFriendName(name);
     setQuestionIndex(0);
     setAnswers([]);
     setSelectedAnswer(null);
@@ -960,7 +961,7 @@ export default function App() {
 
 
 
-    if (!friendName.trim()) {
+    if (!friendQuizStarted) {
 
       return (
 
