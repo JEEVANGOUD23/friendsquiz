@@ -500,3 +500,9 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+.option-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.option-emoji{font-size:30px}
+.option-card.has-image{padding:0;min-height:0;overflow:hidden}
+.option-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.option-card.has-image .option-label{padding:0 8px 12px}
+.option-card.has-image .selected-mark{top:8px;right:8px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:50%;box-shadow:0 2px 6px #0003}

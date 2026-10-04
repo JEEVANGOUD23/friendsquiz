@@ -1,25 +1,151 @@
-
 import { useState } from "react";
 import "./App.css";
 
+// Each option has a label and an emoji (fallback).
+// If `image` is set AND the file loads, a photo is shown instead of the emoji.
+// Put the photos in the project's  public/options/  folder.
+const img = (name) => `/options/${name}.jpg`;
+
 const QUESTIONS = [
-  { question: "What's my favourite colour?", options: ["❤️ Red", "💙 Blue", "🖤 Black", "💚 Green"] },
-  { question: "What's my favourite food?", options: ["🍕 Pizza", "🍔 Burger", "🍜 Biryani", "🍝 Pasta"] },
-  { question: "What's my dream destination?", options: ["🏖️ Maldives", "🗼 Paris", "🏔️ Switzerland", "🗾 Japan"] },
-  { question: "What's my favourite season?", options: ["☀️ Summer", "🌧️ Rainy", "❄️ Winter", "🌸 Spring"] },
-  { question: "What do I enjoy doing most?", options: ["🎬 Watching movies", "🎮 Gaming", "🎵 Listening to music", "✈️ Travelling"] },
-  { question: "What's my favourite drink?", options: ["☕ Coffee", "🧋 Bubble tea", "🥤 Juice", "🍵 Tea"] },
-  { question: "What's my personality like?", options: ["😎 Cool", "😂 Funny", "🤫 Quiet", "🥳 Energetic"] },
-  { question: "What makes me happiest?", options: ["👯 Friends", "👨‍👩‍👧 Family", "🎁 Gifts", "🌍 Adventures"] },
-  { question: "What's my favourite music style?", options: ["🎸 Rock", "🎤 Pop", "🎧 Hip-hop", "🎼 Melody"] },
-  { question: "What's my ideal weekend?", options: ["🏠 Staying home", "🎉 Party", "🌄 Going out", "😴 Sleeping"] },
-  { question: "What do I value most in friendship?", options: ["🤝 Loyalty", "😂 Humour", "💖 Care", "🔐 Trust"] },
-  { question: "What's my favourite time of day?", options: ["🌅 Morning", "☀️ Afternoon", "🌇 Evening", "🌙 Night"] },
-  { question: "Which describes me best?", options: ["🦁 Brave", "🦋 Creative", "🧠 Smart", "💗 Caring"] },
-  { question: "What's my dream superpower?", options: ["🦸 Flying", "⏳ Time travel", "🫥 Invisibility", "🧠 Reading minds"] },
-  { question: "How long have we been friends?", options: ["🌱 Recently", "📅 A few months", "🎂 A few years", "♾️ Forever"] },
+  {
+    question: "What's my favourite colour?",
+    options: [
+      { label: "Red", emoji: "❤️", image: img("red") },
+      { label: "Blue", emoji: "💙", image: img("blue") },
+      { label: "Black", emoji: "🖤", image: img("black") },
+      { label: "Green", emoji: "💚", image: img("green") },
+    ],
+  },
+  {
+    question: "What's my favourite food?",
+    options: [
+      { label: "Pizza", emoji: "🍕", image: img("pizza") },
+      { label: "Burger", emoji: "🍔", image: img("burger") },
+      { label: "Biryani", emoji: "🍜", image: img("biryani") },
+      { label: "Pasta", emoji: "🍝", image: img("pasta") },
+    ],
+  },
+  {
+    question: "What's my dream destination?",
+    options: [
+      { label: "Maldives", emoji: "🏖️", image: img("maldives") },
+      { label: "Paris", emoji: "🗼", image: img("paris") },
+      { label: "Switzerland", emoji: "🏔️", image: img("switzerland") },
+      { label: "Japan", emoji: "🗾", image: img("japan") },
+    ],
+  },
+  {
+    question: "What's my favourite season?",
+    options: [
+      { label: "Summer", emoji: "☀️", image: img("summer") },
+      { label: "Rainy", emoji: "🌧️", image: img("rainy") },
+      { label: "Winter", emoji: "❄️", image: img("winter") },
+      { label: "Spring", emoji: "🌸", image: img("spring") },
+    ],
+  },
+  {
+    question: "What do I enjoy doing most?",
+    options: [
+      { label: "Watching movies", emoji: "🎬", image: img("movies") },
+      { label: "Gaming", emoji: "🎮", image: img("gaming") },
+      { label: "Listening to music", emoji: "🎵", image: img("listening-music") },
+      { label: "Travelling", emoji: "✈️", image: img("travelling") },
+    ],
+  },
+  {
+    question: "What's my favourite drink?",
+    options: [
+      { label: "Coffee", emoji: "☕", image: img("coffee") },
+      { label: "Bubble tea", emoji: "🧋", image: img("bubble-tea") },
+      { label: "Juice", emoji: "🥤", image: img("juice") },
+      { label: "Tea", emoji: "🍵", image: img("tea") },
+    ],
+  },
+  {
+    question: "What's my personality like?",
+    options: [
+      { label: "Cool", emoji: "😎" },
+      { label: "Funny", emoji: "😂" },
+      { label: "Quiet", emoji: "🤫" },
+      { label: "Energetic", emoji: "🥳" },
+    ],
+  },
+  {
+    question: "What makes me happiest?",
+    options: [
+      { label: "Friends", emoji: "👯", image: img("friends") },
+      { label: "Family", emoji: "👨‍👩‍👧", image: img("family") },
+      { label: "Gifts", emoji: "🎁", image: img("gifts") },
+      { label: "Adventures", emoji: "🌍", image: img("adventures") },
+    ],
+  },
+  {
+    question: "What's my favourite music style?",
+    options: [
+      { label: "Rock", emoji: "🎸", image: img("rock") },
+      { label: "Pop", emoji: "🎤", image: img("pop") },
+      { label: "Hip-hop", emoji: "🎧", image: img("hiphop") },
+      { label: "Melody", emoji: "🎼", image: img("melody") },
+    ],
+  },
+  {
+    question: "What's my ideal weekend?",
+    options: [
+      { label: "Staying home", emoji: "🏠", image: img("staying-home") },
+      { label: "Party", emoji: "🎉", image: img("party") },
+      { label: "Going out", emoji: "🌄", image: img("going-out") },
+      { label: "Sleeping", emoji: "😴", image: img("sleeping") },
+    ],
+  },
+  {
+    question: "What do I value most in friendship?",
+    options: [
+      { label: "Loyalty", emoji: "🤝" },
+      { label: "Humour", emoji: "😂" },
+      { label: "Care", emoji: "💖" },
+      { label: "Trust", emoji: "🔐" },
+    ],
+  },
+  {
+    question: "What's my favourite time of day?",
+    options: [
+      { label: "Morning", emoji: "🌅", image: img("morning") },
+      { label: "Afternoon", emoji: "☀️", image: img("afternoon") },
+      { label: "Evening", emoji: "🌇", image: img("evening") },
+      { label: "Night", emoji: "🌙", image: img("night") },
+    ],
+  },
+  {
+    question: "Which describes me best?",
+    options: [
+      { label: "Brave", emoji: "🦁" },
+      { label: "Creative", emoji: "🦋" },
+      { label: "Smart", emoji: "🧠" },
+      { label: "Caring", emoji: "💗" },
+    ],
+  },
+  {
+    question: "What's my dream superpower?",
+    options: [
+      { label: "Flying", emoji: "🦸" },
+      { label: "Time travel", emoji: "⏳" },
+      { label: "Invisibility", emoji: "🫥" },
+      { label: "Reading minds", emoji: "🧠" },
+    ],
+  },
+  {
+    question: "How long have we been friends?",
+    options: [
+      { label: "Recently", emoji: "🌱" },
+      { label: "A few months", emoji: "📅" },
+      { label: "A few years", emoji: "🎂" },
+      { label: "Forever", emoji: "♾️" },
+    ],
+  },
 ];
 
+// The quiz link now only stores the creator's name and their answers.
+// Questions and photos come from the code above, so links stay short.
 function encodeQuiz(data) {
   const bytes = new TextEncoder().encode(JSON.stringify(data));
   let binary = "";
@@ -54,22 +180,42 @@ function readSharedQuiz() {
   if (
     !data ||
     typeof data.creator !== "string" ||
-    !Array.isArray(data.questions) ||
-    data.questions.length !== 15 ||
-    data.questions.some(
-      (q) =>
-        typeof q.question !== "string" ||
-        !Array.isArray(q.options) ||
-        q.options.length !== 4 ||
-        !Number.isInteger(q.answer) ||
-        q.answer < 0 ||
-        q.answer > 3
-    )
+    !Array.isArray(data.answers) ||
+    data.answers.length !== QUESTIONS.length ||
+    data.answers.some((a) => !Number.isInteger(a) || a < 0 || a > 3)
   ) {
     return null;
   }
 
   return data;
+}
+
+// One answer card: shows a photo if available, otherwise the emoji.
+function OptionCard({ option, selected, onClick }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const showImage = option.image && !imageFailed;
+
+  return (
+    <button
+      className={`option-card ${showImage ? "has-image" : ""} ${
+        selected ? "selected" : ""
+      }`}
+      onClick={onClick}
+    >
+      {showImage ? (
+        <img
+          src={option.image}
+          alt={option.label}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+        />
+      ) : (
+        <span className="option-emoji">{option.emoji}</span>
+      )}
+      <span className="option-label">{option.label}</span>
+      {selected && <span className="selected-mark">✓</span>}
+    </button>
+  );
 }
 
 export default function App() {
@@ -87,7 +233,6 @@ export default function App() {
   const [copied, setCopied] = useState(false);
 
   const quiz = sharedQuiz;
-  const currentQuestion = quiz?.questions?.[questionIndex];
 
   function startCreating() {
     if (!creatorName.trim()) {
@@ -129,11 +274,7 @@ export default function App() {
 
     const data = {
       creator: creatorName.trim(),
-      questions: QUESTIONS.map((q, index) => ({
-        question: q.question,
-        options: q.options,
-        answer: correctAnswers[index],
-      })),
+      answers: correctAnswers,
     };
 
     return `${window.location.origin}${window.location.pathname}?quiz=${encodeQuiz(data)}`;
@@ -183,14 +324,13 @@ export default function App() {
     updated[questionIndex] = optionIndex;
     setAnswers(updated);
 
-    if (questionIndex < quiz.questions.length - 1) {
+    if (questionIndex < QUESTIONS.length - 1) {
       setQuestionIndex(questionIndex + 1);
       return;
     }
 
-    const score = quiz.questions.reduce(
-      (total, q, index) =>
-        total + (updated[index] === q.answer ? 1 : 0),
+    const score = quiz.answers.reduce(
+      (total, correct, index) => total + (updated[index] === correct ? 1 : 0),
       0
     );
 
@@ -198,7 +338,7 @@ export default function App() {
       creator: quiz.creator,
       friend: friendName.trim(),
       score,
-      total: quiz.questions.length,
+      total: QUESTIONS.length,
     });
 
     setPage("result");
@@ -275,18 +415,12 @@ export default function App() {
 
           <div className="options-grid">
             {q.options.map((option, index) => (
-              <button
-                key={option}
-                className={`option-card ${
-                  correctAnswers[questionIndex] === index ? "selected" : ""
-                }`}
+              <OptionCard
+                key={option.label}
+                option={option}
+                selected={correctAnswers[questionIndex] === index}
                 onClick={() => chooseCorrect(index)}
-              >
-                {option}
-                {correctAnswers[questionIndex] === index && (
-                  <span className="selected-mark">✓</span>
-                )}
-              </button>
+              />
             ))}
           </div>
 
@@ -395,19 +529,21 @@ export default function App() {
       );
     }
 
+    const currentQuestion = QUESTIONS[questionIndex];
+
     return (
       <main className="app-shell">
         <section className="hero">
           <div className="brand">💗 FriendMatch</div>
           <p className="eyebrow">
-            QUESTION {questionIndex + 1} OF {quiz.questions.length}
+            QUESTION {questionIndex + 1} OF {QUESTIONS.length}
           </p>
 
           <div className="progress-track">
             <div
               className="progress-fill"
               style={{
-                width: `${((questionIndex + 1) / quiz.questions.length) * 100}%`,
+                width: `${((questionIndex + 1) / QUESTIONS.length) * 100}%`,
               }}
             />
           </div>
@@ -419,13 +555,11 @@ export default function App() {
 
           <div className="options-grid">
             {currentQuestion.options.map((option, index) => (
-              <button
-                key={option}
-                className="option-card"
+              <OptionCard
+                key={option.label}
+                option={option}
                 onClick={() => nextFriendQuestion(index)}
-              >
-                {option}
-              </button>
+              />
             ))}
           </div>
         </section>
